@@ -307,7 +307,7 @@ function getQuestionTableMultipleQu($thisSession, &$quTitles, $showday)
             if($qu)
             {
                 if(in_array($qiID, $thisSession->extras[currentQuestions]))
-	                $out .= "\n<tr style='background-color: palegreen;'><td>$qunum.</td><td id='title{$qiID}'><span id='title{$qiID}_txt'>{$qi->title}</span>&nbsp;<a href='#' OnClick='EditTitle(\"{$qiID}\");'>(Edit title)</a></td>";
+	                $out .= "\n<tr class='question-active'><td>$qunum.</td><td id='title{$qiID}'><span id='title{$qiID}_txt'>{$qi->title}</span>&nbsp;<a href='#' OnClick='EditTitle(\"{$qiID}\");'>(Edit title)</a></td>";
                 else
 	                $out .= "\n<tr><td>$qunum.</td><td id='title{$qiID}'><span id='title{$qiID}_txt'>{$qi->title}</span>&nbsp;<a href='#' OnClick='EditTitle(\"{$qiID}\");'>(Edit title)</a></td>";
                 if($qi->endtime > 0)
@@ -393,9 +393,9 @@ function getQuestionTableSingleQu($thisSession, &$quTitles, $showday)
             if($qu)
             {
                 if($thisSession->currentQuestion == $qiID)
-	                $out .= "\n<tr style='background-color: palegreen;'><td>$qunum.</td><td id='title{$qiID}'><span id='title{$qiID}_txt'>{$qi->title}</span>&nbsp;<a href='#' OnClick='EditTitle(\"{$qiID}\");'>(Edit title)</a></td>";
+	                $out .= "\n<tr class='question-active'><td>$qunum.</td><td id='title{$qiID}'><span id='title{$qiID}_txt'>{$qi->title}</span>&nbsp;<a href='#' OnClick='EditTitle(\"{$qiID}\");'>(Edit title)</a></td>";
                 else
-	                $out .= "\n<tr><td>$qunum.</td><td id='title{$qiID}'><span id='title{$qiID}_txt'>{$qi->title}</span>&nbsp;<a href='#' OnClick='EditTitle(\"{$qiID}\");'>(Edit title)</a></td>";
+	                $out .= "\n<tr class='question-inactive'><td>$qunum.</td><td id='title{$qiID}'><span id='title{$qiID}_txt'>{$qi->title}</span>&nbsp;<a href='#' OnClick='EditTitle(\"{$qiID}\");'>(Edit title)</a></td>";
                 if($qi->endtime > 0)
                 {
 	                $out .= "<td>".strftime("%d %b %H:%M", $qi->endtime)."</td>";

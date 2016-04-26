@@ -47,8 +47,13 @@ body {
 	color: #6593BD;
 }
 
-#content {
+#main #content {
     border-color: #e2e5e7;
+}
+
+.page-section {
+	border-bottom-color: #e2e5e7;
+	background-color: #f0f1f2;
 }
 
 footer .glasgow {
@@ -87,6 +92,10 @@ footer .container {
 .footer-links li {
 	display: block;
 	margin-bottom: 5px;
+}
+
+.form-export-data, .table-striped>tbody>tr:nth-of-type(odd) {
+	background-color: #f5f5f5;
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
