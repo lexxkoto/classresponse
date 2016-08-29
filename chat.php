@@ -92,11 +92,11 @@ else
         $template->pageData['breadcrumb'] .= "<li><a href='vote.php?sessionID={$thisSession->id}'>{$thisSession->title}</a></li>";
 		$template->pageData['breadcrumb'] .= "<li>Discussion</li>";
 
-		$template->pageData['mainBody'] .= '<h2 class="page-section extra-bottom">Discuss This Question<a class="pull-right" href="vote.php?sessionID='.$thisSession->id.'&continue=1">Back to Questions</a></h2>';
+		$template->pageData['mainBody'] .= '<h2 class="page-section extra-bottom">Discuss<span class="hidden-xs"> This Question</span><a class="pull-right" href="vote.php?sessionID='.$thisSession->id.'&continue=1">Back<span class="hidden-xs"> to Questions</span></a></h2>';
         $template->pageData['mainBody'] .= "<form id='mublogForm' method='POST' action='chat.php' class='form-horizontal'><div class='form-group'>";
-        $template->pageData['mainBody'] .= "<div class='col-xs-10'><input type='hidden' name='sessionID' value='{$thisSession->id}' />";
+        $template->pageData['mainBody'] .= "<div class='col-sm-10 col-xs-9'><input type='hidden' name='sessionID' value='{$thisSession->id}' />";
         $template->pageData['mainBody'] .= "<textarea name='mublog' rows='3' class='form-control'></textarea></div>";
-        $template->pageData['mainBody'] .= "<div class='col-xs-2'><input type='submit' name='submit' value='Send' class='btn btn-block btn-info submit'/></div>";
+        $template->pageData['mainBody'] .= "<div class='col-sm-2 col-xs-3'><input type='submit' name='submit' value='Send' class='btn btn-block btn-info submit'/></div>";
         $template->pageData['mainBody'] .= "</div></form>";
         $template->pageData['mainBody'] .= "<div id='messages'></div></div>";
     }

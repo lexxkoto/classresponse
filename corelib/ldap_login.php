@@ -8,6 +8,9 @@ function checkLogin($username, $password, &$error=false)
 	$cookiehash = $CFG['cookiehash'];
 	$ldap_host = $CFG['ldaphost'];
 	$ds = @ldap_connect($ldap_host);
+	if(isset($CFG['ldapbinduser'])) {
+    	ldap_bind($ds, $CFG['ldapbinduser'], $CFG['ldapbindpass']);
+    }
    	if(!$ds)
     {
            $error = 'failed to contact LDAP server';
