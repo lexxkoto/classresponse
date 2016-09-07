@@ -182,6 +182,7 @@ function displayQuestion($qiid, $forceTitle=false)
          elseif($qu->definition->responseValue !== false)
          {
 	         $resp->value = $qu->definition->responseValue;
+             $resp->time = time();
 	         $resp->update();
 	         $smemb->lastresponse = time();
 	         $smemb->update();
@@ -190,6 +191,8 @@ function displayQuestion($qiid, $forceTitle=false)
         $out .= '<fieldset>';
         if(($resp == false)||($resp->isPartial))
             $out .= '<legend>Input:</legend>';
+        elseif(isset($_REQUEST['doupdate']))
+            $out .= '<legend>Update answer:</legend>';
         else
             $out .= '<legend>You answered:</legend>';
         //$out .= '<pre>'.print_r($resp,1).'</pre>';
