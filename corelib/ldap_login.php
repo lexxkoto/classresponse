@@ -7,7 +7,7 @@ function checkLogin($username, $password, &$error=false)
     $clrtime = time()+5; // For paranoid prevention of timing to narrow username/password guesses
 	$cookiehash = $CFG['cookiehash'];
 	$ldap_host = $CFG['ldaphost'];
-	$ds = @ldap_connect($ldap_host);
+	$ds = ldap_connect($ldap_host);
 	if(isset($CFG['ldapbinduser'])) {
     	ldap_bind($ds, $CFG['ldapbinduser'], $CFG['ldapbindpass']);
     }
@@ -16,7 +16,7 @@ function checkLogin($username, $password, &$error=false)
            $error = 'failed to contact LDAP server';
            return false;
     }
-	$sr = @ldap_search($ds, $CFG['ldapcontext'], 'cn='.$username);
+	$sr = ldap_search($ds, $CFG['ldapcontext'], 'cn='.$username);
    	if(!$sr)
     {
            $error = 'failed to contact LDAP server';
@@ -26,7 +26,7 @@ function checkLogin($username, $password, &$error=false)
 	if($entry)
     {
         $user_dn = ldap_get_dn($ds, $entry);
-		$ok = @ldap_bind( $ds, $user_dn, $password);
+		$ok = ldap_bind( $ds, $user_dn, $password);
 	    //ldap_free_result( $sr );
 	    if($ok)
 	    {

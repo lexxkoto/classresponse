@@ -10,16 +10,11 @@ require_once('lib/questionTypes.php');
 require_once('lib/shared_funcs.php');
 include_once('corelib/mobile.php');
 $template = new templateMerge($TEMPLATE);
-if($deviceType=='mobile')
-    $template->pageData['modechoice'] = "<a href='{$_SERVER['PHP_SELF']}?mode=computer'>Use computer mode</a>";
-else
-    $template->pageData['modechoice'] = "<a href='{$_SERVER['PHP_SELF']}?mode=mobile'>Use mobile mode</a>";
 
 $uinfo = checkLoggedInUser();
 
 $template->pageData['pagetitle'] = $CFG['sitetitle'];
 $template->pageData['homeURL'] = $_SERVER['PHP_SELF'];
-
 
 $template->pageData['breadcrumb'] = $CFG['breadCrumb'];
 $template->pageData['breadcrumb'] .= '<li><a href="index.php">YACRS</a></li>';
@@ -44,17 +39,19 @@ else
     $qiIDs = explode(',',$thisSession->questions);
     $qiIDPos = array_flip($qiIDs);
     $pos = $qiIDPos[$_REQUEST['qiID']];
-    $PrevNextLinks = '';
+    $PrevNextLinks = '<div class="col-xs-4 question-prev">';
     if($pos > 0)
     {
-        $PrevNextLinks .= "<a href='responses.php?sessionID={$thisSession->id}&qiID={$qiIDs[$pos-1]}' class='pull-left'>&lsaquo;Previous Question</a> ";
+        $PrevNextLinks .= "<a href='responses.php?sessionID={$thisSession->id}&qiID={$qiIDs[$pos-1]}'>&lsaquo; Previous<span class='hidden-xs'> Question</span></a> ";
     }
+    $PrevNextLinks .= '</div><div class="col-xs-4 col-xs-push-4 question-next">';
     if($pos < sizeof($qiIDs)-1)
     {
-        $PrevNextLinks .= "<a href='responses.php?sessionID={$thisSession->id}&qiID={$qiIDs[$pos+1]}' class='pull-right'>Next Question &rsaquo;</a> ";
+        $PrevNextLinks .= "<a href='responses.php?sessionID={$thisSession->id}&qiID={$qiIDs[$pos+1]}'>Next<span class='hidden-xs'> Question</span> &rsaquo;</a> ";
     }
+    $PrevNextLinks .= '</div>';
     if(!empty($PrevNextLinks))
-    	$template->pageData['mainBody'] .= '<div class="question-nav top">'.$PrevNextLinks.'</div>';
+    	$template->pageData['mainBody'] .= '<div class="question-nav question-nav-top">'.$PrevNextLinks.'</div>';
     	
     // End of next/prev button stuff
 	//$template->pageData['mainBody'] .= '<pre>'.print_r($qu->definition,1).'</pre>';
@@ -64,7 +61,7 @@ else
         $template->pageData['afterContent'] = getImageScript();
     }
     $template->pageData['mainBody'] .= $qu->definition->report($thisSession, $qi, (isset($_REQUEST['display']))&&($_REQUEST['display']=='detail'));
-    $template->pageData['mainBody'] .= '<div class="question-nav bottom">'.$PrevNextLinks.'</div>';
+    $template->pageData['mainBody'] .= '<div class="question-nav question-nav-bottom">'.$PrevNextLinks.'</div>';
 	$template->pageData['logoutLink'] = loginBox($uinfo);
 
 }
