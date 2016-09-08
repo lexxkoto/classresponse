@@ -265,7 +265,7 @@ h1, h2, h3, .adminSections > li, .adminSections > li a {
 .breadcrumb {
 	padding-left: 0;
 	margin-bottom: 20px;
-	color: #586776;
+	color: #4f5961;
 }
 
 .breadcrumb li {
@@ -284,7 +284,7 @@ h1, h2, h3, .adminSections > li, .adminSections > li a {
 }
 
 .breadcrumb a {
-	color: #586776;
+	color: #4f5961;
 	text-decoration: none;
 }
 
@@ -302,31 +302,6 @@ h1, h2, h3, .adminSections > li, .adminSections > li a {
 
 .user-search-form .form-group {
 	margin-bottom: 0;
-}
-
-.question-navigation {
-	color: #777;
-	margin-top: 20px;
-	margin-bottom: 0;
-	border-top: 1px solid #ddd;
-	padding-top: 20px;
-	text-align: center;
-	padding-left: 20em;
-	padding-right: 20em;
-}
-
-.question-nav.top {
-	overflow: hidden;
-	border-bottom: 1px solid #ddd;
-	padding-bottom: 10px;
-	margin-bottom: 20px;
-}
-
-.question-nav.bottom {
-	overflow: hidden;
-	border-top: 1px solid #ddd;
-	padding-top: 10px;
-	margin-top: 20px;
 }
 
 .table-striped td {
@@ -446,6 +421,42 @@ h1, h2, h3, .adminSections > li, .adminSections > li a {
 	margin-bottom: 20px;
 }
 
+.question-active td:first-of-type {
+    border-left: 5px solid #84db00;
+}
+
+.question-inactive td:first-of-type {
+    border-left: 5px solid #e2e5e7;
+}
+
+.question-nav {
+    overflow: hidden;
+}
+
+.question-nav-top {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 10px;
+}
+
+.question-nav-bottom {
+        margin-top: 20px;
+    border-top: 1px solid #e5e5e5;
+    padding-top: 10px;
+}
+
+.question-nav div {
+    text-align: center;
+}
+
+.question-nav div.question-prev {
+    text-align: left;
+}
+
+.question-nav div.question-next {
+    text-align: right;
+}
+
 /* Overrides for Bootstrap's mobile theme */
 
 @media (min-width: 768px) {
@@ -466,14 +477,29 @@ h1, h2, h3, .adminSections > li, .adminSections > li a {
 		margin-top: 5px;
 	}
 	
-	#pageHeader .loginBox {
-		float: none;
-		margin-top: 20px;
-		margin-bottom: 20px;
+	#pageHeader {
+    	min-height: 42px;
 	}
 	
-	.logo {
-		display: none;
+	#pageHeader .loginBox {
+		float: none;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	
+	#pageHeader .logo {
+    	height: auto !important;
+		background-image: none !important;
+		text-indent: 0;
+		font-size: inherit;
+		color: #fff;
+		font-weight: 400;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	
+	#pageHeader .col-xs-6:last-of-type {
+    	text-align: right;
 	}
 
 }
